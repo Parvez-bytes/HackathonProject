@@ -129,7 +129,7 @@ A:
     } catch (err) {
       setMessages(prev => [
         ...prev,
-        { role: "ai", text: "⚠️ AI error. Try again later." }
+        { role: "ai", text: "⚠️ API Request limit reached, Try again later." }
       ]);
     } finally {
       setLoading(false);

@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const signUpMessage = document.getElementById('signUpMessage');
             const signInMessage = document.getElementById('signInMessage');
 
-            // Toggle between forms
             signUpButton.addEventListener('click', function() {
                 signInForm.style.display = 'none';
                 signUpForm.style.display = 'block';
@@ -19,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 signInForm.style.display = 'block';
             });
 
-            // Form validation
             submitSignUp.addEventListener('click', function(e) {
                 e.preventDefault();
                 
@@ -38,13 +36,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     return;
                 }
                 
-                // Simulate successful registration
                 showMessage(signUpMessage, 'Account created successfully! Redirecting...', 'success');
                 
-                // In real app, this would redirect to main app
                 setTimeout(() => {
                     alert('Registration successful! Welcome to Campus AI Assistant');
-                    // window.location.href = 'dashboard.html'; // Redirect to main app
+                    // window.location.href = 'dashboard.html'; 
                 }, 1500);
             });
 
@@ -59,17 +55,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     return;
                 }
                 
-                // Simulate successful login
                 showMessage(signInMessage, 'Signing in...', 'success');
                 
-                // In real app, this would authenticate and redirect
                 setTimeout(() => {
                     alert('Login successful! Welcome back to Campus AI Assistant');
-                    // window.location.href = 'dashboard.html'; // Redirect to main app
+                    // window.location.href = 'dashboard.html'; 
                 }, 1500);
             });
 
-            // Social login buttons
             document.querySelectorAll('.social-btn').forEach(button => {
                 button.addEventListener('click', function() {
                     const platform = this.classList.contains('google') ? 'Google' : 'Facebook';
@@ -77,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
 
-            // Helper function to show messages
             function showMessage(element, text, type) {
                 element.textContent = text;
                 element.className = `messageDiv ${type}`;
@@ -88,7 +80,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 5000);
             }
 
-            // Add floating animation to features
             const features = document.querySelectorAll('.feature');
             features.forEach((feature, index) => {
                 feature.style.animationDelay = `${index * 0.2}s`;

@@ -41,15 +41,13 @@
 
   <iframe id="chatFrame"></iframe>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const topic = params.get("topic");
+ <script>
+  const params = new URLSearchParams(window.location.search);
+  const topic = params.get("topic");
 
   document.getElementById("chatFrame").src =
-  `../chatbot/index.html?topic=${topic}`;
+    "../chatbot/index.html?topic=" + topic;
+</script>
 
-
-
-  </script>
 </body>
 </html>

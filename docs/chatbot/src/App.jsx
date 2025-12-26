@@ -156,7 +156,6 @@ A:
     <>
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
 
-        {/* BACK BUTTON */}
         <button
           onClick={() => navigate(-1)}
           className="fixed top-4 left-4 bg-gradient-to-r from-purple-600 to-blue-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:-translate-y-0.5 transition-all"
@@ -166,13 +165,11 @@ A:
 
         <div className="w-[1084px] h-[676px] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl flex flex-col overflow-hidden">
 
-          {/* HEADER */}
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-5 text-white flex justify-between">
             <h1 className="font-bold text-lg">🤖 AI Assistant</h1>
             <button onClick={() => setMessages([])}>Clear</button>
           </div>
 
-          {/* CHAT */}
           <div className="flex-1 p-4 overflow-y-auto space-y-4">
             {messages.length === 0 ? (
               <div className="h-full flex items-center justify-center text-gray-500 text-center">
@@ -181,43 +178,39 @@ A:
               </div>
             ) : (
               messages.map((msg, i) => (
-  <div
-    key={i}
-    className={`flex items-start gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-  >
-    {/* AI Avatar using robot emoji */}
-    {msg.role === "ai" && (
-      <div className="flex-shrink-0 text-2xl">🤖</div>
-    )}
+                <div
+                  key={i}
+                  className={`flex items-start gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                >
+                  {msg.role === "ai" && (
+                    <div className="flex-shrink-0 text-2xl">🤖</div>
+                  )}
 
-    {/* Message Bubble */}
-    <div
-      className={`px-4 py-3 rounded-2xl max-w-[80%] ${
-        msg.role === "user"
-          ? "bg-blue-600 text-white"
-          : "bg-gray-800 text-white shadow-md" // changed to dark gray + white text
-      }`}
-    >
-      <ReactMarkdown>{msg.text}</ReactMarkdown>
+                  <div
+                    className={`px-4 py-3 rounded-2xl max-w-[80%] ${msg.role === "user"
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-800 text-white shadow-md"
+                      }`}
+                  >
+                    <ReactMarkdown>{msg.text}</ReactMarkdown>
 
-      {/* Google Calendar button: only for AI messages with date */}
-      {msg.role === "ai" && msg.text.match(/\d{2}-\d{2}-\d{4}/) && (
-        <button
-          onClick={() =>
-            addToCalendar({
-              title: "Deadline Reminder",
-              date: msg.text.match(/\d{2}-\d{2}-\d{4}/)[0],
-              description: msg.text.replace(/\n/g, " ")
-            })
-          }
-          className="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700"
-        >
-          📅 Add to Google Calendar
-        </button>
-      )}
-    </div>
-  </div>
-))
+                    {msg.role === "ai" && msg.text.match(/\d{2}-\d{2}-\d{4}/) && (
+                      <button
+                        onClick={() =>
+                          addToCalendar({
+                            title: "Deadline Reminder",
+                            date: msg.text.match(/\d{2}-\d{2}-\d{4}/)[0],
+                            description: msg.text.replace(/\n/g, " ")
+                          })
+                        }
+                        className="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700"
+                      >
+                        📅 Add to Google Calendar
+                      </button>
+                    )}
+                  </div>
+                </div>
+              ))
 
             )}
 
@@ -225,7 +218,6 @@ A:
             <div ref={chatEndRef} />
           </div>
 
-          {/* INPUT */}
           <div className="p-4 border-t flex gap-3">
             <input
               value={input}

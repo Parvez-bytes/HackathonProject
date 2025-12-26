@@ -45,8 +45,9 @@
     const params = new URLSearchParams(window.location.search);
     const topic = params.get("topic");
 
-   document.getElementById("chatFrame").src =
-  `../chatbot/index.html?topic=${topic}`;
+  document.getElementById("chatFrame").src =
+  `../chatbot/dist/index.html?topic=${topic}`;
+
 
   </script>
 </body>

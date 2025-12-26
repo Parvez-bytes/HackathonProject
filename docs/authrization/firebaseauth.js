@@ -1,11 +1,7 @@
-  // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
   import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js" ;
   import {getFirestore, setDoc, doc} from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js" ;
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyCW56P6O0OooDcC8282V0ZOUMvnYeNp6L4",
     authDomain: "authrization-page.firebaseapp.com",
@@ -15,7 +11,6 @@
     appId: "1:796390339142:web:476cc494eaed08154c5047"
   };
 
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
 
   function showMessage(message, divId){
@@ -52,7 +47,6 @@
         setDoc(docRef,userData)
         .then(()=>{
             window.location.href='../landing/index.html';
-            // window.location.href='index.html';
         })
         .catch((error)=>{
             console.log("error writing document", error);
@@ -81,7 +75,6 @@
         showMessage('Login is successful', 'signInMessage');
         const user=userCredential.user;
         localStorage.setItem('loggedInUserId',user.uid);
-        // window.location.href='homepage.html';
         window.location.href = "../landing/index.html";
 
     })

@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     window.location.href = "ticketpage.html";
                 } else {
                     // Boxes 1–3 go to AI chatbot
-                    window.location.href = `http://localhost:5173/?topic=${category.type}`;
+                    window.location.href = `chat.html?topic=${category.type}`;
 
                 }
             });

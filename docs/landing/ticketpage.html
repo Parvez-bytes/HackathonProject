@@ -20,7 +20,6 @@
             padding: 20px;
         }
 
-        /* Background Effects */
         .background-effects {
             position: fixed;
             top: 0;
@@ -68,7 +67,6 @@
             animation-delay: -10s;
         }
 
-        /* Header */
         .header {
             display: flex;
             justify-content: space-between;
@@ -138,7 +136,6 @@
             transform: translateY(-2px);
         }
 
-        /* Main Container */
         .main-container {
             position: relative;
             z-index: 1;
@@ -146,7 +143,6 @@
             margin: 0 auto;
         }
 
-        /* Page Title */
         .page-title {
             text-align: center;
             margin-bottom: 40px;
@@ -176,7 +172,6 @@
             margin: 0 auto;
         }
 
-        /* Toggle Buttons */
         .toggle-buttons {
             display: flex;
             gap: 20px;
@@ -218,7 +213,6 @@
             font-size: 1.3rem;
         }
 
-        /* Sections */
         .section {
             display: none;
             animation: fadeIn 0.5s ease;
@@ -233,7 +227,6 @@
             display: block;
         }
 
-        /* Services Grid */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -302,7 +295,6 @@
             color: #f59e0b;
         }
 
-        /* Ticket Form */
         .ticket-form {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
@@ -389,7 +381,6 @@
             padding-left: 55px;
         }
 
-        /* Ticket Counter */
         .ticket-counter {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
@@ -421,7 +412,6 @@
             margin-top: 5px;
         }
 
-        /* Submit Button */
         .submit-btn {
             width: 100%;
             padding: 18px;
@@ -451,7 +441,6 @@
             transform: translateY(0);
         }
 
-        /* Message Box */
         .message-box {
             margin-top: 20px;
             padding: 15px;
@@ -474,7 +463,6 @@
             color: #ef4444;
         }
 
-        /* Ticket History */
         .ticket-history {
             margin-top: 40px;
             padding: 30px;
@@ -535,7 +523,6 @@
             color: #10b981;
         }
 
-        /* Footer */
         .footer {
             text-align: center;
             margin-top: 50px;
@@ -545,7 +532,6 @@
             font-size: 0.9rem;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .header {
                 flex-direction: column;
@@ -597,14 +583,12 @@
     </style>
 </head>
 <body>
-    <!-- Background Effects -->
     <div class="background-effects">
         <div class="floating-shape shape-1"></div>
         <div class="floating-shape shape-2"></div>
         <div class="floating-shape shape-3"></div>
     </div>
 
-    <!-- Header -->
     <header class="header">
         <div class="logo-container">
             <div class="logo-icon">
@@ -623,15 +607,12 @@
         </div>
     </header>
 
-    <!-- Main Container -->
     <div class="main-container">
-        <!-- Page Title -->
         <div class="page-title">
             <h1>Campus Services & Support</h1>
             <p>Access essential services or raise support tickets for immediate assistance</p>
         </div>
 
-        <!-- Toggle Buttons -->
         <div class="toggle-buttons">
             <button class="toggle-btn active" onclick="showServices()">
                 <i class="fas fa-concierge-bell"></i>
@@ -643,7 +624,6 @@
             </button>
         </div>
 
-        <!-- Services Section -->
         <div id="servicesSection" class="section active">
             <div class="services-grid">
                 <div class="service-card" onclick="openService('Railway Concession')">
@@ -684,7 +664,6 @@
             </div>
         </div>
 
-        <!-- Ticket Section -->
         <div id="ticketSection" class="section">
             <div class="ticket-counter">
                 <div class="counter-text">Tickets Used This Month</div>
@@ -761,30 +740,25 @@
                 <div id="msg" class="message-box"></div>
             </div>
 
-            <!-- Ticket History -->
             <div class="ticket-history">
                 <h3 class="history-title">
                     <i class="fas fa-history"></i>
                     Recent Tickets
                 </h3>
                 <div class="history-list" id="ticketHistory">
-                    <!-- Tickets will be added here by JavaScript -->
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
         <p>Campus AI Assistant © 2024 | 24/7 AI-Powered Campus Support</p>
     </footer>
 
     <script>
-        // Initialize variables
         let ticketCount = parseInt(localStorage.getItem("ticketCount")) || 0;
         let tickets = JSON.parse(localStorage.getItem("tickets")) || [];
 
-        // DOM Elements
         const servicesSection = document.getElementById("servicesSection");
         const ticketSection = document.getElementById("ticketSection");
         const toggleButtons = document.querySelectorAll(".toggle-btn");
@@ -792,28 +766,24 @@
         const ticketHistory = document.getElementById("ticketHistory");
         const msg = document.getElementById("msg");
 
-        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             updateTicketCounter();
             loadTicketHistory();
-            showServices(); // Start with services section
+            showServices(); 
         });
 
-        // Show Services Section
         function showServices() {
             servicesSection.classList.add('active');
             ticketSection.classList.remove('active');
             updateToggleButtons(0);
         }
 
-        // Show Ticket Section
         function showTicket() {
             servicesSection.classList.remove('active');
             ticketSection.classList.add('active');
             updateToggleButtons(1);
         }
 
-        // Update Toggle Button States
         function updateToggleButtons(activeIndex) {
             toggleButtons.forEach((btn, index) => {
                 if (index === activeIndex) {
@@ -824,7 +794,6 @@
             });
         }
 
-        // Open Service
         function openService(service) {
             const messages = {
                 'Railway Concession': 'Opening Railway Concession application...\n\nRequired Documents:\n• Student ID Card\n• College Bonafide Certificate\n• Passport Size Photos (2)\n• Previous Concession Copy (if any)',
@@ -833,7 +802,6 @@
                 'Bonafide Certificate': 'Processing Bonafide Certificate...\n\nCertificate Includes:\n• Student Details\n• Course Information\n• Academic Year\n• Principal Signature\n• College Seal'
             };
 
-            // Show animated modal effect
             msg.className = "message-box success";
             msg.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Opening ${service} application...`;
             msg.style.display = 'block';
@@ -842,14 +810,12 @@
                 msg.innerHTML = messages[service];
                 msg.style.display = 'block';
                 
-                // Auto-hide after 8 seconds
                 setTimeout(() => {
                     msg.style.display = 'none';
                 }, 8000);
             }, 1500);
         }
 
-        // Submit Ticket
         function submitTicket() {
             const name = document.getElementById("name").value.trim();
             const roll = document.getElementById("roll").value.trim();
@@ -857,7 +823,6 @@
             const sem = document.getElementById("sem").value;
             const issue = document.getElementById("issue").value.trim();
 
-            // Validation
             if (!name || !roll || !dept || !sem || !issue) {
                 showMessage("Please fill in all fields", "error");
                 return;
@@ -868,7 +833,6 @@
                 return;
             }
 
-            // Create ticket
             const ticket = {
                 id: generateTicketId(),
                 name: name,
@@ -881,33 +845,27 @@
                 status: 'open'
             };
 
-            // Update counts
             ticketCount++;
-            tickets.unshift(ticket); // Add to beginning of array
+            tickets.unshift(ticket); 
 
-            // Save to localStorage
             localStorage.setItem("ticketCount", ticketCount);
             localStorage.setItem("tickets", JSON.stringify(tickets));
 
-            // Update UI
             updateTicketCounter();
             addTicketToHistory(ticket);
             showMessage(`Ticket submitted successfully! Ticket ID: ${ticket.id}`, "success");
 
-            // Clear form
             document.getElementById("name").value = "";
             document.getElementById("roll").value = "";
             document.getElementById("dept").value = "";
             document.getElementById("sem").value = "";
             document.getElementById("issue").value = "";
 
-            // Auto-hide success message
             setTimeout(() => {
                 msg.style.display = 'none';
             }, 5000);
         }
 
-        // Generate Ticket ID
         function generateTicketId() {
             const prefix = 'TKT';
             const timestamp = Date.now().toString().slice(-6);
@@ -915,7 +873,6 @@
             return `${prefix}-${timestamp}-${random}`;
         }
 
-        // Update Ticket Counter
         function updateTicketCounter() {
             ticketCounter.textContent = ticketCount;
             if (ticketCount >= 3) {
@@ -925,7 +882,6 @@
             }
         }
 
-        // Load Ticket History
         function loadTicketHistory() {
             ticketHistory.innerHTML = '';
             
@@ -944,7 +900,6 @@
             });
         }
 
-        // Add Ticket to History
         function addTicketToHistory(ticket) {
             const ticketItem = document.createElement('div');
             ticketItem.className = 'history-item';
@@ -961,7 +916,6 @@
                 </div>
             `;
             
-            // Add to beginning of history
             if (ticketHistory.firstChild) {
                 ticketHistory.insertBefore(ticketItem, ticketHistory.firstChild);
             } else {
@@ -969,14 +923,12 @@
             }
         }
 
-        // Show Message
         function showMessage(text, type) {
             msg.textContent = text;
             msg.className = `message-box ${type}`;
             msg.style.display = 'block';
         }
 
-        // Add some animation to service cards
         document.querySelectorAll('.service-card').forEach((card, index) => {
             card.style.animationDelay = `${index * 0.1}s`;
             card.style.animation = 'fadeIn 0.5s ease';

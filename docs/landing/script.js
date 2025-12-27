@@ -16,10 +16,13 @@ const auth = getAuth();
 const db = getFirestore();
 
 onAuthStateChanged(auth, (user) => {
-    if (!user) {
-        window.location.href = "../authrization/index.html";
-        return;
-    }
+    const isGuest = sessionStorage.getItem("guest") === "true";
+const isUser = localStorage.getItem("loggedInUserId");
+
+if (!isGuest && !isUser) {
+  window.location.href = "../authrization/index.html";
+}
+
 
     const uid = localStorage.getItem("loggedInUserId");
     if (!uid) return;
